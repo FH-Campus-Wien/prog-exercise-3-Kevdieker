@@ -7,12 +7,11 @@ import java.util.stream.IntStream;
 
 public class App {
 
-    // Implement all methods as public static
     public static void oneMonthCalendar(int dayCount, int firstDay) {
 
         int count = 1;
 
-        // Keeps Track where we are in the week
+        //Keeps track where we are in the week
         int whatday = 0;
 
         //Prints spaces instead of days from last month
@@ -133,43 +132,48 @@ public class App {
 
         for (int whRV = 0; whRV < string.length(); whRV++) {
 
-            //Makes Spaces go away
+            //Overwrites Spaces with afterChar AND puts a \n in the last space AND says the next char is a firstLetter
             if (chArray[whRV] == ' ') {
 
+                //Overwriting process...
                 for (int j = whRV; j < string.length() - 1; j++) {
                     chArray[j] = chArray[j + 1];
                 }
 
-                chArray[string.length() - 1] = '\n';
+                //Fills the hole
+                chArray[string.length() - 1] = '\0';
+
                 spaceCount++;
+
+                //Goes one Step back, in case of double spaces
                 whRV--;
 
                 firstLetter = true;
 
-                //Makes SpecialCases go away
-            } else if (chArray[whRV] > 32 && chArray[whRV] < 65) {
+
+            } else if (chArray[whRV] >= '!' && chArray[whRV] <= '@') {
 
                 for (int j = whRV; j < string.length() - 1; j++) {
                     chArray[j] = chArray[j + 1];
                 }
 
-                chArray[string.length() - 1] = '\n';
+                chArray[string.length() - 1] = '\0';
                 spaceCount++;
                 whRV--;
 
-                //Makes smallchar BIGchar
-            } else if (chArray[whRV] >= 97 && chArray[whRV] <= 122 && firstLetter) {
+                //Make firstLetter smallchar to BIGCHAR
+            } else if (chArray[whRV] >= 'a' && chArray[whRV] <= 'z' && firstLetter) {
 
-                chArray[whRV] -= 32;
+                chArray[whRV] -= ' ';
                 firstLetter = false;
 
-            } else if (chArray[whRV] >= 65 && chArray[whRV] <= 90 && firstLetter) {
+                //Lets firstLetter BIGCHARs be BIGCHARs
+            } else if (chArray[whRV] >= 'A' && chArray[whRV] <= 'Z' && firstLetter) {
                 firstLetter = false;
-            }
 
-            //Makes BIGchar smallchar
-            else if (chArray[whRV] >= 65 && chArray[whRV] <= 90 && !firstLetter) {
-                chArray[whRV] += 32;
+                //Makes BIGCHAR to smallchar if not firstLetter
+            } else if (chArray[whRV] >= 'A' && chArray[whRV] <= 'Z' && !firstLetter) {
+                chArray[whRV] += ' ';
             }
         }
 
@@ -198,24 +202,36 @@ public class App {
         } else if (verifyCode == 10) {
             verifyCode = 0;
         }
-/*
-      System.out.println(sum);
-        System.out.println(rest);
-        System.out.println(verifyCode);
-*/
+
         return verifyCode;
     }
 
     public static void main(String[] args) {
+        //System.out.println(camelCase("! KeV iSt *Cool"));
+/*
 
-      //  int[] a = {0, 0, 4, 4, 4, 8, 2, 9, 3};
+        char[] b= new char[]{'a', 'b','c' };
+
+        char[] c= new char[b.length];
+
+        char[] d= new char[c.length];
+
+        for (int i=0;i< b.length-1;i++)
+        {
+                c[i] = b[i + 1];
+        }
+        for (int i=0;i< b.length-1;i++)
+        {
+            d[i] = c[i + 1];
+        }
 
 
-        // System.out.println(Arrays.toString(a));
+        c[b.length - 1] = 'G';
 
-        // System.out.println(Arrays.toString(checkDigit(a)));
 
-        //System.out.println(checkDigit(a));
 
+        System.out.println(String.valueOf(b));
+        System.out.println(String.valueOf(c));
+        System.out.println(String.valueOf(d));*/
     }
 }
