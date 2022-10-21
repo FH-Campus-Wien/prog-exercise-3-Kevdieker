@@ -94,7 +94,7 @@ public class App {
          */
 
         Random rdmObj = new Random();
-        int rdmNum = 1 + rdmObj.nextInt(101);
+        int rdmNum = 1 + rdmObj.nextInt(100);
 
         return rdmNum;
     }
@@ -196,7 +196,7 @@ public class App {
         if (verifyCode == 11) {
             verifyCode = 5;
         } else if (verifyCode == 10) {
-            verifyCode = 5;
+            verifyCode = 0;
         }
 /*
       System.out.println(sum);
