@@ -176,9 +176,46 @@ public class App {
         return String.valueOf(chArray, 0, string.length() - spaceCount);
     }
 
+    public static int checkDigit(int[] numbers) {
+
+        int[] weighting = new int[numbers.length];
+        int verifyCode = 0;
+        int sum = 0;
+        int rest = 0;
+
+        for (int i = 0; i < numbers.length; i++) {
+
+            weighting[i] += i + 2;
+            numbers[i] *= weighting[i];
+            sum += numbers[i];
+        }
+
+        rest = sum % 11;
+        verifyCode = 11 - rest;
+
+        if (verifyCode == 11) {
+            verifyCode = 5;
+        } else if (verifyCode == 10) {
+            verifyCode = 5;
+        }
+/*
+      System.out.println(sum);
+        System.out.println(rest);
+        System.out.println(verifyCode);
+*/
+        return verifyCode;
+    }
 
     public static void main(String[] args) {
 
+      //  int[] a = {0, 0, 4, 4, 4, 8, 2, 9, 3};
+
+
+        // System.out.println(Arrays.toString(a));
+
+        // System.out.println(Arrays.toString(checkDigit(a)));
+
+        //System.out.println(checkDigit(a));
 
     }
 }
